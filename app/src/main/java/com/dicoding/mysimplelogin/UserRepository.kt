@@ -1,9 +1,10 @@
 package com.dicoding.mysimplelogin
 
+import android.util.Log
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
+@Singleton // jika singletone ini di hapus maka akan instance yang di buak akan berbeda
 class UserRepository @Inject constructor(private val sesi: SessionManager) {
 
     fun loginUser(username: String) {
@@ -16,4 +17,6 @@ class UserRepository @Inject constructor(private val sesi: SessionManager) {
     fun isUserLogin() = sesi.isLogin
 
     fun logoutUser() = sesi.logout()
+
+    fun checkInstance() = Log.d("Singleton", "checkInstance: $this")
 }
